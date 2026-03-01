@@ -42,6 +42,9 @@
 }
 
 .hero-image-wrap {
+  display: flex;
+  align-items: center;
+ align-content: center;
   position: relative;
   border-radius: 20px;
   overflow: hidden;
@@ -57,7 +60,8 @@
 }
 
 .hero-image {
-  width: 100%;
+  width: 20%;
+  margin: auto;
   height: auto;
   display: block;
   transition: transform 0.6s ease;
@@ -74,12 +78,14 @@
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(0,0,0,0.3) 60%,
+    rgba(0,0,0,0.3) 60%,artist
     rgba(0,0,0,0.7) 100%
   );
   pointer-events: none;
 }
-
+.section-header {
+  margin: auto;
+}
 /* ══════════════════════════════════════════════
    TIMELINE
    ══════════════════════════════════════════════ */
@@ -142,7 +148,7 @@
               0 12px 30px rgba(212,175,55,0.6);
 }
 
-/* Timeline Content Card */
+/* Timeline Content Card */artist
 .timeline-content {
   background: linear-gradient(145deg, rgba(26,26,26,0.95), rgba(18,18,18,0.95));
   border: 1px solid rgba(212,175,55,0.15);
@@ -160,12 +166,12 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, var(--gold), transparent);
+  background: linear-gradieartistnt(180deg, var(--gold), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-.timeline-item:hover .timeline-content {
+.timeline-item:hover .timelartistine-content {
   transform: translateX(10px);
   border-color: rgba(212,175,55,0.4);
   box-shadow: 0 20px 50px rgba(0,0,0,0.4),
@@ -257,6 +263,9 @@
    ══════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
+  .hero-image-wrap {
+    display: flex;
+    flex-direction: column;}
   .timeline {
     padding-left: 2rem;
   }
@@ -300,6 +309,7 @@
     width: 35px;
     height: 35px;
     font-size: 0.9rem;
+    margin-left: 20px;
   }
 
   .timeline-content {
