@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --gold: #d4af37;
+  --gold-light: #f4d03f;
+  --gold-dim: rgba(212, 175, 55, 0.15);
+  --black: #0a0a0a;
+  --dark: #1a1a1a;
+  --darker: #111111;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.65);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@font-face {
+    font-family: 'impact';
+    src: url('/fonts/impact.ttf');
+}
+html { scroll-behavior: smooth; }
+
+body {
+  font-family:'Montserrat', sans-serif !important;
+  background: var(--black);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
+
+::selection { background: var(--gold); color: var(--black); }
+
+/* ── Shared Section Styles ── */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInUp 0.8s ease both;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.gold { color: var(--gold); }
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── CSS Animation Classes ── */
+.fade-in {
+  animation: fadeInEffect 0.8s ease both;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease both;
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.8s ease both;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.8s ease both;
+}
+
+.stagger-item {
+  animation: staggerIn 0.6s ease both;
+}
+
+/* ── Global Keyframes ── */
+@keyframes fadeInEffect {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes staggerIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(212,175,55,0.4)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(212,175,55,0.9)); }
+}

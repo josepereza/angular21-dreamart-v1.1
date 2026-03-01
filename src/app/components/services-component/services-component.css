@@ -1,0 +1,100 @@
+.services-section {
+  padding: 7rem 0;
+  background: var(--black);
+  position: relative;
+}
+
+.services-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(212,175,55,0.05), transparent 50%),
+    radial-gradient(ellipse at 90% 50%, rgba(212,175,55,0.05), transparent 50%);
+}
+
+.svc-card {
+  background: linear-gradient(145deg, rgba(26,26,26,0.9), rgba(20,20,20,0.95));
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+  backdrop-filter: blur(6px);
+  cursor: default;
+}
+
+/* Top glowing edge */
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  box-shadow: 0 0 12px var(--gold);
+}
+
+/* Radial glow on hover */
+.svc-card::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.svc-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(212,175,55,0.5);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.12);
+}
+
+.svc-card:hover::before { opacity: 1; }
+.svc-card:hover::after  { opacity: 1; }
+
+.svc-icon {
+  font-size: 3.2rem;
+  margin-bottom: 1.4rem;
+  display: inline-block;
+  filter: grayscale(70%);
+  transition: filter 0.5s ease, transform 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+.svc-card:hover .svc-icon {
+  filter: grayscale(0%);
+  transform: scale(1.25) rotate(8deg);
+}
+
+.svc-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.svc-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+/* Animated bottom line */
+.svc-line {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: 0 0 20px 20px;
+  transition: width 0.5s ease;
+}
+
+.svc-card:hover .svc-line { width: 100%; }

@@ -1,0 +1,20 @@
+
+
+.navbar-logo {
+  transition: all .3s ease;
+}
+
+
+@media (max-width: 768px) {
+  .container img {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+ .container img {
+    width: 200px;
+  }
+
+ 
+ }

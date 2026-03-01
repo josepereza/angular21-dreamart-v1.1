@@ -1,0 +1,22 @@
+
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="section-header fade-in-up">
+
+      <h2 class="section-title">Unsere <span class="gold">Leistungen</span></h2>
+      <p class="section-subtitle">Von der ersten Idee bis zum fertigen Kunstwerk</p>
+    </div>
+    <div class="row g-4">
+      @for (svc of services; track svc.title; let i = $index) {
+        <div class="col-lg-3 col-md-6 stagger-item" [style.animation-delay]="(i * 0.1) + 's'">
+          <div class="svc-card">
+            <div class="svc-icon">{{ svc.icon }}</div>
+            <h3 class="svc-title">{{ svc.title }}</h3>
+            <p class="svc-desc">{{ svc.description }}</p>
+            <div class="svc-line"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

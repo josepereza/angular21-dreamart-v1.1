@@ -1,0 +1,312 @@
+.artist-section {
+  padding: 7rem 0;
+  background: linear-gradient(180deg, var(--dark) 0%, var(--black) 50%, var(--darker) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background */
+.artist-section::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212,175,55,0.08), transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 20s ease-in-out infinite;
+}
+
+.artist-section::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(150,30,30,0.06), transparent 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+/* ══════════════════════════════════════════════
+   HERO IMAGE
+   ══════════════════════════════════════════════ */
+
+.artist-hero {
+  margin: 4rem 0 5rem;
+  position: relative;
+}
+
+.hero-image-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 100%;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.hero-image-wrap:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8),
+              0 0 40px rgba(212,175,55,0.2);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.hero-image-wrap:hover .hero-image {
+  transform: scale(1.02);
+}
+
+/* Gradient overlay on image */
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0,0,0,0.3) 60%,
+    rgba(0,0,0,0.7) 100%
+  );
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════
+   TIMELINE
+   ══════════════════════════════════════════════ */
+
+.timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(212,175,55,0.5) 10%,
+    rgba(212,175,55,0.5) 90%,
+    transparent 100%
+  );
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  padding-left: 3rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline Dot */
+.timeline-dot {
+  position: absolute;
+  left: -3rem;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  font-size: 1.2rem;
+  box-shadow: 0 0 0 6px rgba(212,175,55,0.2),
+              0 8px 20px rgba(212,175,55,0.4);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.15) rotate(360deg);
+  box-shadow: 0 0 0 8px rgba(212,175,55,0.3),
+              0 12px 30px rgba(212,175,55,0.6);
+}
+
+/* Timeline Content Card */
+.timeline-content {
+  background: linear-gradient(145deg, rgba(26,26,26,0.95), rgba(18,18,18,0.95));
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateX(10px);
+  border-color: rgba(212,175,55,0.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4),
+              0 0 30px rgba(212,175,55,0.1);
+}
+
+.timeline-item:hover .timeline-content::before {
+  opacity: 1;
+}
+
+/* Timeline Header */
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-period {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.4rem 1rem;
+  background: rgba(212,175,55,0.1);
+  border-radius: 50px;
+}
+
+.timeline-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+}
+
+.timeline-badge--exp {
+  background: rgba(100,200,100,0.15);
+  color: #8bc34a;
+  border: 1px solid rgba(100,200,100,0.3);
+}
+
+.timeline-badge--edu {
+  background: rgba(100,150,255,0.15);
+  color: #64b5f6;
+  border: 1px solid rgba(100,150,255,0.3);
+}
+
+/* Timeline Title */
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.timeline-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.timeline-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════════════ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    left: 15px;
+  }
+
+  .timeline-item {
+    padding-left: 2.5rem;
+  }
+
+  .timeline-dot {
+    left: -2.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .timeline-content {
+    padding: 1.5rem 1.8rem;
+  }
+
+  .timeline-title {
+    font-size: 1.2rem;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-dot {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .timeline-content {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .timeline-description {
+    font-size: 0.95rem;
+  }
+}
