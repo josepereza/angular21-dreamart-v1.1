@@ -1,9 +1,41 @@
-
-
-.navbar-logo {
-  transition: all .3s ease;
+.custom-navbar {
+  background: transparent;
+  transition: all 0.4s ease;
+  padding: 1rem 0;
 }
 
+.custom-navbar.scrolled {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+  padding: 0.6rem 0;
+}
+
+.nav-link {
+  color: white !important;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ff2e2e;
+  transition: 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar-logo {
+  filter: brightness(2.6);
+  transition: all .3s ease;
+}
 
 @media (max-width: 768px) {
   .container img {

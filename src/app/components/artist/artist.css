@@ -78,14 +78,358 @@
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(0,0,0,0.3) 60%,artist
+    rgba(0,0,0,0.3) 60%,
     rgba(0,0,0,0.7) 100%
   );
   pointer-events: none;
 }
-.section-header {
-  margin: auto;
+
+/* ══════════════════════════════════════════════
+   JUMBOTRON - WISSENSWERTES
+   ══════════════════════════════════════════════ */
+
+.jumbotron-wrapper {
+  margin: 5rem 0;
+  position: relative;
+  padding: 20px;
 }
+
+.jumbotron-card {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.05) 0%,
+    rgba(26, 26, 26, 0.95) 20%,
+    rgba(18, 18, 18, 0.98) 80%,
+    rgba(212, 175, 55, 0.05) 100%
+  );
+  border: 2px solid rgba(212, 175, 55, 0.25);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  overflow: hidden;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(212, 175, 55, 0.15) inset;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jumbotron-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 
+    0 40px 100px rgba(0, 0, 0, 0.8),
+    0 0 80px rgba(212, 175, 55, 0.25) inset;
+}
+
+/* Animated corner borders */
+.jumbotron-card::before,
+.jumbotron-card::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 3px solid var(--gold);
+  transition: all 0.6s ease;
+  opacity: 0.3;
+}
+
+.jumbotron-card::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 24px 0 0 0;
+}
+
+.jumbotron-card::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 24px 0;
+}
+
+.jumbotron-card:hover::before,
+.jumbotron-card:hover::after {
+  width: 140px;
+  height: 140px;
+  opacity: 1;
+}
+
+/* Glowing orbs */
+.jumbotron-glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: glowPulse 8s ease-in-out infinite alternate;
+}
+
+.jumbotron-glow--left {
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.6), transparent 70%);
+  animation-delay: 0s;
+}
+
+.jumbotron-glow--right {
+  bottom: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4), transparent 70%);
+  animation-delay: 4s;
+}
+
+/* Header */
+.jumbotron-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.jumbotron-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(255, 215, 0, 0.1));
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-size: clamp(0.6rem, 4vw, 1.4rem);
+  font-weight: 900;
+  letter-spacing: clamp(0em, 1.5vw, 0.3em);
+  text-transform: uppercase;
+  color: var(--gold);
+  box-shadow: 
+    0 8px 30px rgba(212, 175, 55, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.2) inset;
+  position: relative;
+  overflow: hidden;
+  animation: badgeShimmer 3s ease-in-out infinite;
+  max-width: 95%;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.jumbotron-badge i {
+  font-size: 1.2rem;
+  animation: starRotate 4s linear infinite;
+}
+
+.jumbotron-badge::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
+  animation: badgeSweep 3s linear infinite;
+}
+
+/* Body */
+.jumbotron-body {
+  position: relative;
+  z-index: 2;
+}
+
+.jumbotron-text {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.jumbotron-text .highlight {
+  color: var(--gold);
+  font-weight: 700;
+  position: relative;
+  padding: 0 0.3rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), transparent);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.jumbotron-text .highlight:hover {
+  color: var(--gold-light);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), transparent);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+/* Footer decoration */
+.jumbotron-footer {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.decorative-line {
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gold) 50%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.decorative-line::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 100%
+  );
+  animation: lineShimmer 2s linear infinite;
+}
+
+/* Animations */
+@keyframes badgeShimmer {
+  0%, 100% { 
+    box-shadow: 
+      0 8px 30px rgba(212, 175, 55, 0.3),
+      0 0 40px rgba(212, 175, 55, 0.2) inset;
+  }
+  50% { 
+    box-shadow: 
+      0 12px 40px rgba(212, 175, 55, 0.5),
+      0 0 60px rgba(212, 175, 55, 0.4) inset;
+  }
+}
+
+@keyframes badgeSweep {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes starRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes lineShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jumbotron-wrapper {
+    margin: 4rem 0;
+  }
+
+  .jumbotron-card {
+    padding: 3rem 1.5rem;
+  }
+
+  .jumbotron-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .jumbotron-badge {
+    gap: 0.6rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .jumbotron-badge i {
+    font-size: 0.9rem;
+  }
+
+  .jumbotron-text {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .jumbotron-card::before,
+  .jumbotron-card::after {
+    width: 60px;
+    height: 60px;
+  }
+
+  .jumbotron-card:hover::before,
+  .jumbotron-card:hover::after {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 500px) {
+  .jumbotron-wrapper {
+    margin: 3rem 0;
+  }
+
+  .jumbotron-card {
+    padding: 2rem 0.8rem;
+  }
+
+  .jumbotron-header {
+    margin-bottom: 2rem;
+  }
+
+  .jumbotron-badge {
+    gap: 0.3rem;
+    padding: 0.6rem 0.8rem;
+    border-width: 1px;
+  }
+
+  .jumbotron-badge i {
+    font-size: clamp(0.5rem, 3vw, 0.7rem);
+  }
+
+  .jumbotron-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .decorative-line {
+    width: 100px;
+  }
+
+  .jumbotron-card::before,
+  .jumbotron-card::after {
+    width: 40px;
+    height: 40px;
+  }
+
+  .jumbotron-card:hover::before,
+  .jumbotron-card:hover::after {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 380px) {
+  .jumbotron-card {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .jumbotron-badge {
+    gap: 0.2rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .jumbotron-text {
+    font-size: 0.85rem;
+  }
+}
+
 /* ══════════════════════════════════════════════
    TIMELINE
    ══════════════════════════════════════════════ */
@@ -148,7 +492,7 @@
               0 12px 30px rgba(212,175,55,0.6);
 }
 
-/* Timeline Content Card */artist
+/* Timeline Content Card */
 .timeline-content {
   background: linear-gradient(145deg, rgba(26,26,26,0.95), rgba(18,18,18,0.95));
   border: 1px solid rgba(212,175,55,0.15);
@@ -166,12 +510,12 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradieartistnt(180deg, var(--gold), transparent);
+  background: linear-gradient(180deg, var(--gold), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-.timeline-item:hover .timelartistine-content {
+.timeline-item:hover .timeline-content {
   transform: translateX(10px);
   border-color: rgba(212,175,55,0.4);
   box-shadow: 0 20px 50px rgba(0,0,0,0.4),
@@ -263,9 +607,6 @@
    ══════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  .hero-image-wrap {
-    display: flex;
-    flex-direction: column;}
   .timeline {
     padding-left: 2rem;
   }
@@ -309,7 +650,6 @@
     width: 35px;
     height: 35px;
     font-size: 0.9rem;
-    margin-left: 20px;
   }
 
   .timeline-content {
